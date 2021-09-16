@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        border: 1px solid #000;
+      }
+      body {
+        position: relative;
+      }
+      #dofy {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 150px;
+        width: 270px;
+        border-radius: 20px;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+      #score {
+        position: absolute;
+        top: 100px;
+        right: 150px;
+        font-size: 25px;
+        font-family: tahoma;
+        font-weight: bold;
+        color: white;
+      }
+      #btn {
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        height: 150px;
+        width: 150px;
+      }
+      #luffy_ready {
+        position: absolute;
+        bottom: 150px;
+        right: 0;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #video1,
+      #video2,
+      #video3 {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video1" width="320" height="240" loop>
+      <source
+        src="Musics/One Piece OST — Luffy's Fierce Attack! extended.mp4"
+        type="video/ogg"
+      />
+    </video>
+    <source src="Musics/Doflamingo's Best Laugh.mp4" type="video/ogg" />
+    <video id="video2" width="320" height="240">
+      <source src="Musics/Doflamingo's Best Laugh.mp4" type="video/ogg" />
+    </video>
+    <video id="video3" width="320" height="240">
+      <source
+        src="Musics/gomu gomu no notification sound.mp4"
+        type="video/ogg"
+      />
+    </video>
+    <canvas id="gamezone" width="1350" height="600"> </canvas>
+    <img
+      id="dofy"
+      src="https://64.media.tumblr.com/611890d02de55b39ac82cd446a1f9cc7/11f594de7b9df7ab-3d/s540x810/ff83cefd217b7ec22ce2173ecf1c619b771d2731.gifv"
+      alt=""
+    />
+    <p id="score">score: 0</p>
+
+    <div class="play">
+      <!-- <img
+      src="https://64.media.tumblr.com/611890d02de55b39ac82cd446a1f9cc7/11f594de7b9df7ab-3d/s540x810/ff83cefd217b7ec22ce2173ecf1c619b771d2731.gifv"
+      alt=""
+    /> -->
+      <img id="luffy_ready" src="Images/luffy_ready.gif" alt="" />
+      <img
+        id="btn"
+        src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/30ff69b6be561b1.png"
+        alt=""
+      />
+    </div>
+  </body>
+  <!-- <script>
+    var canvas = document.getElementById("gamezone");
+    var context = canvas.getContext("2d");
+    var scoreshow = document.getElementById("score");
+
+    var luffyImg = new Image();
+    var hinhnenchinh = new Image();
+    var silkTren = new Image();
+    var silkDuoi = new Image();
+
+    luffyImg.src = "Images/luffy_fly.gif";
+    hinhnenchinh.src = "Images/hinhnen.png";
+    silkDuoi.src = "Images/itoskill.png";
+    silkTren.src = "Images/isoTren.png";
+
+    var score = 0;
+    var khoangcachhaito = 170;
+    var khoangcachdentoduoi;
+    var luffy = {
+      x: hinhnenchinh.width / 5,
+      y: hinhnenchinh.height / 2,
+    };
+    var silks = [];
+    silks[0] = {
+      x: canvas.width,
+      y: 0,
+    };
+    // Tao fuction run game
+    function run() {
+      //load img
+      context.drawImage(hinhnenchinh, 0, 0, 900, 500);
+      context.drawImage(luffyImg, luffy.x, luffy.y, 100, 100);
+
+      for (let i = 0; i < silks.length; i++) {
+        khoangcachdentoduoi = silkTren.height + khoangcachhaito;
+        context.drawImage(silkTren, silks[i].x, silks[i].y);
+        context.drawImage(
+          silkDuoi,
+          silks[i].x,
+          silks[i].y + khoangcachdentoduoi
+        );
+        silks[i].x -= 5;
+        if (silks[i].x == canvas.width / 2) {
+          silks.push({
+            x: canvas.width,
+            y: Math.floor(Math.random() * silkTren.height) - silkTren.height,
+          });
+        }
+        if (silks[i].x == 0) silks.splice(0, 1);
+
+        if (silks[i].x == luffy.x) score++;
+        if (
+          luffy.y + luffyImg.height == canvas.height ||
+          (luffy.x + luffyImg.width >= silks[i].x &&
+            luffy.x <= silks[i].x + silkTren.width &&
+            (luffy.y <= silks[i].y + silkTren.height ||
+              luffy.y + luffyImg.height >= silks[i].y + khoangcachdentoduoi))
+        ) {
+          return;
+        }
+      }
+      scoreshow.innerHTML = "score: " + score;
+      luffy.y += 1;
+      requestAnimationFrame(run);
+    }
+    document.addEventListener("keydown", function () {
+      luffy.y -= 70;
+    });
+    run();
+  </script> -->
+  <script>
+    // mình bắt đầu nhé hôm nay mic hư :)
+    var canvas = document.getElementById("gamezone");
+    var context = canvas.getContext("2d");
+    var scoreshow = document.getElementById("score");
+
+    var birdimg = new Image();
+    var hinhnenchinh = new Image();
+    var ongtren = new Image();
+    var ongduoi = new Image();
+    birdimg.src = "Images/luffy_fly2.png";
+    hinhnenchinh.src = "Images/hinhnen.png";
+    ongtren.src = "Images/ito.png";
+    ongduoi.src = "Images/itoskill.png";
+
+    var score = 0;
+    var khoangcachhaiong = 190;
+    var khoangcachdenongduoi;
+    var bird = {
+      x: hinhnenchinh.width / 5,
+      y: hinhnenchinh.height / 2,
+    };
+    var ong = [];
+    ong[0] = {
+      x: canvas.width,
+      y: 0,
+    };
+
+    function run() {
+      context.drawImage(hinhnenchinh, 0, 0, 1350, 600);
+      context.drawImage(birdimg, bird.x, bird.y, 130, 70);
+
+      for (var i = 0; i < ong.length; i++) {
+        khoangcachdenongduoi = ongtren.height + khoangcachhaiong;
+        context.drawImage(ongtren, ong[i].x, ong[i].y);
+        // vẽ ống trên theo tọa độ của ống đó
+        //  ống dưới phụ thuộc ống trên
+        context.drawImage(ongduoi, ong[i].x, ong[i].y + khoangcachdenongduoi);
+        // mình lấy vị trí ống trên cộng khoảng cách đến
+        // ống dưới vì tí nữa mình random nó lên xuống
+        ong[i].x -= 5; //để ống di chuyển
+
+        // lập trình thêm ống khi ống di chuyển đến giữa
+        // nó sẽ tạo thêm 1 ống nữa
+        if (ong[i].x == canvas.width / 2) {
+          ong.push({
+            x: canvas.width,
+            y: Math.floor(Math.random() * ongtren.height) - ongtren.height,
+          });
+        }
+        if (ong[i].x == 0) {
+          ong.splice(0, 1);
+          score++;
+        }
+
+        if (
+          bird.y + birdimg.height == canvas.height ||
+          (bird.x + birdimg.width >= ong[i].x &&
+            bird.x <= ong[i].x + ongtren.width &&
+            (bird.y <= ong[i].y + ongtren.height ||
+              bird.y + birdimg.height >= ong[i].y + khoangcachdenongduoi))
+        ) {
+          alert("You Lose !!");
+          return;
+        }
+      }
+
+      scoreshow.innerHTML = "score: " + score;
+      bird.y += 3;
+      requestAnimationFrame(run);
+    }
+    var flag = true;
+    document.addEventListener("keydown", function () {
+      bird.y -= 50;
+      setInterval(() => {
+        if (flag == true) {
+          birdimg.src = "Images/luffy_fly.png";
+          flag = false;
+        } else {
+          birdimg.src = "Images/luffy_fly1.png";
+          flag = true;
+        }
+      }, 500);
+    });
+
+    document.querySelector("body").style.backgroundImage =
+      "url('./Images/hinhnen.png')";
+    document.querySelector("body").style.backgroundSize = "100% 100vh";
+    document.querySelector("body").style.backgroundRepeat = "no-repeat";
+    document.querySelector("#btn").onclick = function () {
+      document.querySelector("body").style.backgroundImage = "none";
+      document.querySelector("#btn").style.display = "none";
+      document.querySelector("#luffy_ready").style.display = "none";
+      run();
+      document.querySelector("#video1").play();
+      document.querySelector("#video2").play();
+      document.querySelector("#video3").play();
+    };
+  </script>
+</html>
